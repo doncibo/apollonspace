@@ -33,7 +33,7 @@ app.use(cookieParser())
 //   })
 // );
 app.use(cors({ origin: true }));
-app.use(helmet({ hsts: false }));
+app.use(helmet({ hsts: true }));
 app.use(
   csurf({
     cookie: {
