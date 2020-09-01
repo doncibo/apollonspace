@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/auth';
 import { Redirect } from 'react-router-dom';
+import { Container } from '@material-ui/core'
+import NavBar from '../components/NavBar'
+import '../style/loginpage.css'
 
 function LoginPage() {
     const [username, setUsername] = useState('')
@@ -15,29 +18,38 @@ function LoginPage() {
     }
 
     if(currentUserId) return <Redirect to="/" />;
-    
+
     return(
-        <form onSubmit={handleSubmit}>
-            <label>
-                Email
-                <input 
-                    type="text" 
-                    name="username" 
-                    value={username} 
-                    onChange={e => setUsername(e.target.value)} 
-                />
-            </label>
-            <label>
-                Password
-                <input 
-                    type="password" 
-                    name="password" 
-                    value={password} 
-                    onChange={e => setPassword(e.target.value)} 
-                />
-            </label>
-            <button type="submit" >Log in</button>
-        </form>
+        <>
+            <NavBar></NavBar>
+            <div className="login-form-container">
+                <Container className="login-form" >
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            <input 
+                                id="email-input"
+                                type="text" 
+                                name="username" 
+                                value={username} 
+                                onChange={e => setUsername(e.target.value)}
+                                placeholder="Enter Username/Email" 
+                            />
+                        </label>
+                        <label>
+                            <input 
+                                id="password-input"
+                                type="password" 
+                                name="password" 
+                                value={password} 
+                                onChange={e => setPassword(e.target.value)} 
+                                placeholder="Enter Password"
+                            />
+                        </label>
+                        <button id="signin-button" type="submit" >Sign up</button>
+                    </form>
+                </Container>
+            </div>
+        </>
     )
 };
 
