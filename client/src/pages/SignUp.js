@@ -1,39 +1,51 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../store/auth';
+import { signup, login } from '../store/auth';
 import { Redirect } from 'react-router-dom';
 import { Container } from '@material-ui/core'
 import NavBar from '../components/NavBar'
-import '../style/loginpage.css'
+import '../style/signup.css'
 
 function SignUp() {
-    // const [username, setUsername] = useState('')
-    // const [password, setPassword] = useState('')
-    // const currentUserId = useSelector(state => state.auth.id);
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [password2, setPassword2] = useState('')
+    const currentUserId = useSelector(state => state.auth.id);
     const dispatch = useDispatch();
     
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     dispatch(login(username, password))
-    // }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(signup(username, email, password, password2))
+        dispatch(login(username, password))
+    }
 
-    // if(currentUserId) return <Redirect to="/" />;
+    if(currentUserId) return <Redirect to="/" />;
 
     return(
         <>
-            <NavBar></NavBar>
+            <NavBar />
             <div className="login-form-container">
                 <Container className="login-form" >
-                    {/* <form onSubmit={handleSubmit}> */}
-                    <form>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            <input 
+                                id="username-input"
+                                type="text" 
+                                name="username" 
+                                value={username} 
+                                onChange={e => setUsername(e.target.value)}
+                                placeholder="Enter Username" 
+                            />
+                        </label>
                         <label>
                             <input 
                                 id="email-input"
                                 type="text" 
-                                name="username" 
-                                // value={username} 
-                                // onChange={e => setUsername(e.target.value)}
-                                placeholder="Enter Username/Email" 
+                                name="email" 
+                                value={email} 
+                                onChange={e => setEmail(e.target.value)}
+                                placeholder="Enter Email" 
                             />
                         </label>
                         <label>
@@ -41,8 +53,8 @@ function SignUp() {
                                 id="password-input"
                                 type="password" 
                                 name="password" 
-                                // value={password} 
-                                // onChange={e => setPassword(e.target.value)} 
+                                value={password} 
+                                onChange={e => setPassword(e.target.value)} 
                                 placeholder="Enter Password"
                             />
                         </label>
@@ -51,8 +63,8 @@ function SignUp() {
                                 id="password-input"
                                 type="password" 
                                 name="password" 
-                                // value={password} 
-                                // onChange={e => setPassword(e.target.value)} 
+                                value={password2} 
+                                onChange={e => setPassword2(e.target.value)} 
                                 placeholder="Confirm Password"
                             />
                         </label>

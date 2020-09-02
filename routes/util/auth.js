@@ -49,7 +49,7 @@ function restoreUser(req, _res, next) {
       return next(err);
     }
 
-    next();
+    return next();
   });
 }
 

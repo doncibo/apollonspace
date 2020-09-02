@@ -19,6 +19,7 @@ function App() {
       }
       setLoading(false);
     }
+
     loadUser();
   }, [dispatch]);
 

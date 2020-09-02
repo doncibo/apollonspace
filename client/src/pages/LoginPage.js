@@ -21,7 +21,7 @@ function LoginPage() {
 
     return(
         <>
-            <NavBar></NavBar>
+            <NavBar />
             <div className="login-form-container">
                 <Container className="login-form" >
                     <form onSubmit={handleSubmit}>
@@ -45,7 +45,7 @@ function LoginPage() {
                                 placeholder="Enter Password"
                             />
                         </label>
-                        <button id="signin-button" type="submit" >Sign up</button>
+                        <button id="signin-button" type="submit" >Sign in</button>
                     </form>
                 </Container>
             </div>
