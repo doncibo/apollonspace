@@ -19,7 +19,7 @@ function LoginButton(){
 
     return(
         <div className="login" onClick={handleSubmit}>
-            <button id="login" >Demo Sign in</button>
+            <button id="demologin" >Demo Sign in</button>
         </div>
     )
 }

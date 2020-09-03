@@ -8,6 +8,7 @@ import '../style/loginmodal.css'
 function LoginModal() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    console.log(useState(''))
     const currentUserId = useSelector(state => state.auth.id);
     const dispatch = useDispatch();
     
