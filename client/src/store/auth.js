@@ -10,6 +10,7 @@ export const newUser = (user) => {
         user
     }
 }
+
 export const setUser = (user) => {
     return {
         type: SET_USER,
@@ -19,7 +20,7 @@ export const setUser = (user) => {
 
 export const removeUser = () => {
     return {
-        type: REMOVE_USER
+        type: REMOVE_USER,
     }
 }
 
@@ -62,9 +63,13 @@ export const signup = (username, email, password, password2) => {
 }
 
 export const logout = () => {
-    return async (dispatch) => {
+    return async dispatch => {
+        const csrfToken = Cookies.get("XSRF-TOKEN");
         const res = await fetch('/api/session', {
             method: "DELETE",
+            headers: {
+                "X-CSRF-TOKEN": csrfToken,
+            },
         })
         dispatch(removeUser());
         res.data = await res.json();

@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/auth';
 import { Redirect } from 'react-router-dom';
 import { Container } from '@material-ui/core'
-import '../style/loginpage.css'
+import '../style/loginmodal.css'
 
-function LoginPage() {
+function LoginModal() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const currentUserId = useSelector(state => state.auth.id);
@@ -18,11 +18,13 @@ function LoginPage() {
 
     if(currentUserId) return <Redirect to="/" />;
 
-    return(
+    const body = (
         <>
             <div className="login-form-container">
                 <Container className="login-form" >
+                Sign into your account
                     <form onSubmit={handleSubmit}>
+                        
                         <label>
                             <input 
                                 id="email-input"
@@ -43,12 +45,14 @@ function LoginPage() {
                                 placeholder="Enter Password"
                             />
                         </label>
-                        <button id="signin-button" type="submit" >Sign in</button>
+                        <button id="signin-button" type="submit" onClick={handleSubmit}>Sign in</button>
                     </form>
                 </Container>
             </div>
         </>
     )
+
+    return body;
 };
 
-export default LoginPage;
+export default LoginModal;

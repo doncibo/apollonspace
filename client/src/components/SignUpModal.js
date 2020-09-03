@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signup, login } from '../store/auth';
 import { Redirect } from 'react-router-dom';
 import { Container } from '@material-ui/core'
-
 import '../style/signup.css'
 
-function SignUp() {
+
+function SignUpModal() {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -22,10 +22,11 @@ function SignUp() {
 
     if(currentUserId) return <Redirect to="/" />;
 
-    return(
+    const body = (
         <>
-            <div className="login-form-container">
-                <Container className="login-form" >
+            <div className="signup-form-container">
+                <Container className="signup-form" >
+                    Sign Up!
                     <form onSubmit={handleSubmit}>
                         <label>
                             <input 
@@ -73,6 +74,7 @@ function SignUp() {
             </div>
         </>
     )
+    return body;
 };
 
-export default SignUp;
+export default SignUpModal;

@@ -1,4 +1,11 @@
-.signup-form-container {
+.login-form-outer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.login-form-container {
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -7,7 +14,8 @@
     
 }
 
-.signup-form {
+
+.login-form {
     border: 0px;
     margin: auto; 
     padding: 30px;
@@ -16,9 +24,10 @@
     font: inherit;
     font-weight: bolder;
     font-size: 24px;
+    
 }
 
-#email-input, #username-input {
+#email-input {
     text-align: center;
     font-size: 18px;
     width: 100%;

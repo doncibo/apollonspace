@@ -1,18 +1,18 @@
 //contains sign in, create account for right side of nav bar
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import LoginButton from './LoginButton'
+import SignUpButton from './SignUpButton'
+import DemoLoginButton from './DemoLoginButton'
+import '../style/loginpage.css'
+
 
 function RightNav(){
-    console.log("right bar renders")
     return(
         <div className="rightnav">
-            <Link to="/login" className="login">
-                <button id="login">Sign in</button>
-            </Link>
-            <Link to="/signup" className="signup">
-                <button id="signup">Create account</button>
-            </Link>
+            <LoginButton />
+            <DemoLoginButton />
+            <SignUpButton />
         </div>
     )
 }
