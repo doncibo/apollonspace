@@ -14,6 +14,7 @@ const validateLogin = [
   check("password").exists(),
 ];
 
+
 router.get(
   "/",
   requireUser,
@@ -25,27 +26,34 @@ router.get(
     }
     next(new AuthenticationError());
   })
-);
+  );
+  
+  router.put(
+    "/",
+    validateLogin,
+    handleValidationErrors,
+    asyncHandler(async function (req, res, next) {
+      const user = await User.login(req.body);
+      if (user) {
+        const token = await generateToken(user);
+        res.cookie("token", token, {
+          maxAge: expiresIn * 1000, // maxAge in milliseconds
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+        });
+        return res.json({
+          user,
+        });
+      }
+      return next(new Error('Invalid credentials'));
+    })
+    );
+    
+    router.delete('/', asyncHandler(async (req,res) => {
+      console.log("im here")
+      res.clearCookie('token');
+      return res.json("");
+    }));
 
-router.put(
-  "/",
-  validateLogin,
-  handleValidationErrors,
-  asyncHandler(async function (req, res, next) {
-    const user = await User.login(req.body);
-    if (user) {
-      const token = await generateToken(user);
-      res.cookie("token", token, {
-        maxAge: expiresIn * 1000, // maxAge in milliseconds
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-      });
-      return res.json({
-        user,
-      });
-    }
-    return next(new Error('Invalid credentials'));
-  })
-);
-
-module.exports = router;
+    module.exports = router;
+    

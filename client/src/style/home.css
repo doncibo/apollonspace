@@ -1,0 +1,38 @@
+/* 
+    classes: main, root-container, container-1, container-2, container-3
+    id: 
+*/
+.root-container {
+    display: flex;
+    width: 100%;
+    background-color: rgb(122, 122, 122);
+    height: 100%;
+    position: static;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    height: 1350px;
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+}
+
+.container-1 {
+    width: 100%;
+    height: 450px;
+    background-image: url("./svg/pexels-stephen-niemeier-63703.jpg");
+    background-size: 100%;
+}
+.container-2 {
+    width: 100%;
+    height: 450px;
+    /* background-image: image("pexels-stephen-niemeier-63703.jpg"); */
+}
+.container-3 {
+    width: 1239px;
+    height: 450px;
+    /* background-image: image("pexels-stephen-niemeier-63703.jpg"); */
+}
